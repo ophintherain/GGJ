@@ -1,0 +1,33 @@
+├── Audio
+├── Plugins
+├── Prefabs
+├── Resources
+├── Scenes
+│   ├── Level_1.unity
+│   ├── Level_2.unity
+│   ├── Level_3.unity
+│   ├── SampleScene.unity
+│   ├── StartScene.unity
+├── Scripts
+│   ├── Core
+│   │   ├── ConfigManager.cs
+│   │   ├── GameManager.cs
+│   ├── GamePlay
+│   │   ├── DialogBox
+│   │   │   ├── BeatManager.cs
+│   │   │   ├── DialogBoxBase.cs
+│   │   │   ├── DialogBoxSpawner.cs
+│   │   │   ├── HoldDialogBox.cs
+│   │   │   ├── RandomDialogBox.cs
+│   │   │   ├── SwipeDialogBox.cs
+│   │   │   ├── TapDialogBox.cs
+│   │   ├── Enemy
+│   │   │   ├── EnemyController.cs
+│   ├── UI
+│   │   ├── UIMenu.cs
+│   │   ├── UIResult.cs
+│   │   ├── UISetting.cs
+│   ├── Utils
+│   │   └── FileTree.py
+├── Sprites
+├── character.cs

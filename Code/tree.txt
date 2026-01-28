@@ -1,0 +1,49 @@
+├── Audio
+├── Plugins
+├── Prefabs
+│   ├── DialogBox
+│   │   ├── Level1
+│   │   │   ├── GameObject1.prefab
+│   ├── Result
+├── Resources
+├── Scenes
+│   ├── LevelSelectScene.unity
+│   ├── SampleScene.unity
+│   ├── StartScene.unity
+│   ├── yyyscene.unity
+├── Scripts
+│   ├── Core
+│   │   ├── ConfigManager.cs
+│   │   ├── GameManager.cs
+│   │   ├── InputManager.cs
+│   │   ├── LevelManager.cs
+│   ├── GamePlay
+│   │   ├── DialogBox
+│   │   │   ├── BeatManager.cs
+│   │   │   ├── DialogBoxBase.cs
+│   │   │   ├── DialogBoxGroup.cs
+│   │   │   ├── DialogBoxSpawner.cs
+│   │   │   ├── HoldDialogBox.cs
+│   │   │   ├── RandomDialogBox.cs
+│   │   │   ├── SwipeDialogBox.cs
+│   │   │   ├── TapDialogBox.cs
+│   │   ├── Enemy
+│   │   │   ├── EnemyController.cs
+│   ├── UI
+│   │   ├── UIMenu.cs
+│   │   ├── UIResult.cs
+│   │   ├── UISetting.cs
+│   ├── Utils
+│   │   ├── FileTree.py
+├── Sprites
+│   ├── Test
+│   │   ├── ggj
+│   │   │   ├── ggj
+│   │   │   │   ├── ggj.png
+│   │   │   │   ├── ggj概念1.png
+│   │   │   │   ├── ggj概念2.png
+│   │   │   │   ├── k1.png
+│   │   │   │   ├── k2.png
+│   │   │   │   ├── k3.png
+│   │   │   │   ├── k4.png
+├── character.cs
