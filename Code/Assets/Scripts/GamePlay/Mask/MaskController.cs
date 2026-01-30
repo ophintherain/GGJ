@@ -28,7 +28,7 @@ public class MaskController : MonoBehaviour
         gameObject.SetActive(true);
         canSwipe = false;
 
-        Debug.Log("[Frenzy] Appear phase");
+        Debug.Log("[Mask] Appear phase");
         // 👉 这里你可以触发 Animator
         // animator.SetTrigger("Appear");
 
@@ -36,7 +36,7 @@ public class MaskController : MonoBehaviour
 
         // === 可划动阶段 ===
         canSwipe = true;
-        Debug.Log("[Frenzy] Playable phase");
+        Debug.Log("[Mask] Playable phase");
 
         yield return new WaitForSeconds(playableDuration);
 
@@ -44,6 +44,6 @@ public class MaskController : MonoBehaviour
         canSwipe = false;
         gameObject.SetActive(false);
 
-        Debug.Log("[Frenzy] End");
+        Debug.Log("[Mask] End");
     }
 }
