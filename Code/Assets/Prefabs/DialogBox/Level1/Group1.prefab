@@ -90,7 +90,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnTime: 0
   isActive: 0
-  hitWindow: 0.3
+  hitTime: 0
+  earlyWindow: 9
+  lateWindow: 9
 --- !u!1 &1565316346556570552
 GameObject:
   m_ObjectHideFlags: 0
@@ -102,7 +104,7 @@ GameObject:
   - component: {fileID: 1613193734932165948}
   - component: {fileID: 8761560928585258415}
   - component: {fileID: 7318857162191239636}
-  - component: {fileID: 2406850799906147042}
+  - component: {fileID: 7337656084254866563}
   m_Layer: 5
   m_Name: Image (3)
   m_TagString: Untagged
@@ -167,7 +169,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &2406850799906147042
+--- !u!114 &7337656084254866563
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -176,12 +178,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1565316346556570552}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2903cd7971daec14ca01a398574c74fd, type: 3}
+  m_Script: {fileID: 11500000, guid: 079708cca846c6c4391bf2b0095d35dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   spawnTime: 0
   isActive: 0
-  hitWindow: 0.3
+  hitTime: 0
+  earlyWindow: 50
+  lateWindow: 50
+  sequence: 77000000610000007300000064000000
 --- !u!1 &2906600100495047435
 GameObject:
   m_ObjectHideFlags: 0
@@ -193,7 +198,7 @@ GameObject:
   - component: {fileID: 4150732385854368783}
   - component: {fileID: 1353473573708642106}
   - component: {fileID: 4526674164405192362}
-  - component: {fileID: 1826586307015267175}
+  - component: {fileID: 4910844607957432932}
   m_Layer: 5
   m_Name: Image (1)
   m_TagString: Untagged
@@ -258,7 +263,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &1826586307015267175
+--- !u!114 &4910844607957432932
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -267,12 +272,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 2906600100495047435}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2903cd7971daec14ca01a398574c74fd, type: 3}
+  m_Script: {fileID: 11500000, guid: 543157b2aff7150438776edd63614a7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   spawnTime: 0
   isActive: 0
-  hitWindow: 0.3
+  hitTime: 0
+  earlyWindow: 9
+  lateWindow: 9
+  beatInterval: 1
+  pressWindow: 9
+  releaseWindow: 9
+  holdKey: 32
 --- !u!1 &4363249480804469604
 GameObject:
   m_ObjectHideFlags: 0
@@ -284,7 +295,7 @@ GameObject:
   - component: {fileID: 6520149115126447824}
   - component: {fileID: 7379393762506072325}
   - component: {fileID: 4965072673938070520}
-  - component: {fileID: 6244142315636196802}
+  - component: {fileID: 8961551565488236387}
   m_Layer: 5
   m_Name: Image (2)
   m_TagString: Untagged
@@ -349,7 +360,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &6244142315636196802
+--- !u!114 &8961551565488236387
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -358,12 +369,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 4363249480804469604}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2903cd7971daec14ca01a398574c74fd, type: 3}
+  m_Script: {fileID: 11500000, guid: 96866de1d1159b0479235ceb9649b773, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   spawnTime: 0
   isActive: 0
-  hitWindow: 0.3
+  hitTime: 0
+  earlyWindow: 9
+  lateWindow: 9
 --- !u!1 &8311907628108658485
 GameObject:
   m_ObjectHideFlags: 0
@@ -375,7 +388,7 @@ GameObject:
   - component: {fileID: 6094969694365108736}
   - component: {fileID: 4655833699472711725}
   m_Layer: 5
-  m_Name: GameObject1
+  m_Name: Group1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -416,3 +429,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d6a3e131cb1f2c468fdcdb4738818b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  events:
+  - time: 0.47
+    dialogBox: {fileID: 8763956179319904995}
+  - time: 0.94
+    dialogBox: {fileID: 4910844607957432932}
+  - time: 1.41
+    dialogBox: {fileID: 8961551565488236387}
+  - time: 1.88
+    dialogBox: {fileID: 7337656084254866563}

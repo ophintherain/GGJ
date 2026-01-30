@@ -4,37 +4,42 @@ using UnityEngine;
 
 public class DialogBoxSpawner : MonoBehaviour
 {
-    public GameObject tapDialogBoxPrefab;
+    public GameObject[] groupPrefabs;
+    private int index = 0;
 
-    private List<TapDialogBox> spawnedTaps = new List<TapDialogBox>();
+    public bool HasNextGroup => groupPrefabs != null && index < groupPrefabs.Length;
 
-    public DialogBoxGroup SpawnGroup()
+    public DialogBoxGroup SpawnNextGroup()
     {
-        GameObject go = Instantiate(
-            tapDialogBoxPrefab,
-            transform.position,
-            Quaternion.identity,
-            transform
-        );
-
-        return go.GetComponent<DialogBoxGroup>();
-    }
-
-    private IEnumerator SpawnCoroutine(int count, float beatInterval)
-    {
-        for (int i = 0; i < count; i++)
+        if (!HasNextGroup)
         {
-            SpawnTap();
-            yield return new WaitForSeconds(beatInterval);
+            Debug.Log("[Spawner] No more groups to spawn.");
+            return null;
         }
-    }
 
-    private void SpawnTap()
-    {
-        var go = Instantiate(tapDialogBoxPrefab, transform.position, Quaternion.identity, transform);
-        var tap = go.GetComponent<TapDialogBox>();
-        tap.Spawn(Time.time);
-        spawnedTaps.Add(tap);
+        GameObject prefab = groupPrefabs[index];
+        index++;
+
+        if (prefab == null)
+        {
+            Debug.LogError($"[Spawner] groupPrefabs[{index - 1}] is NULL!");
+            return null;
+        }
+
+        GameObject go = Instantiate(prefab, transform.position, Quaternion.identity, transform);
+        DialogBoxGroup group = go.GetComponent<DialogBoxGroup>();
+
+        if (group == null)
+        {
+            Debug.LogError($"[Spawner] Prefab {prefab.name} has no DialogBoxGroup!");
+            Destroy(go);
+            return null;
+        }
+
+        Debug.Log($"[Spawner] Spawned group {index}/{groupPrefabs.Length}: {prefab.name}");
+        return group;
     }
 }
+
+
 

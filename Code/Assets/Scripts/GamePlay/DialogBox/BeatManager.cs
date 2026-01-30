@@ -1,44 +1,139 @@
-using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
+using UnityEngine;
 
 public class BeatManager : MonoBehaviour
 {
-    public float beatInterval = 1f;
+    [Header("Rhythm")]
+    public float bpm = 130f;
+    public int beatsPerBar = 4;
+
+    [Header("Group Timeline")]
+    public float startOffset = 2f;
+
+    // ===== 自动计算出来的 =====
+    [HideInInspector] public float beatInterval;
+    [HideInInspector] public float barDuration;
+    [HideInInspector] public float groupInterval;
+    [HideInInspector] public float demoDuration;
+    [HideInInspector] public float playDuration;
+
     public DialogBoxSpawner spawner;
+    public EventCounter eventCounter;      // 你之前要 demo1/demo2/play1/play2 倒数的那个
 
-    private List<TapDialogBox> currentGroup;
+    private DialogBoxGroup currentGroup;
+    private Coroutine groupFlowCoroutine;
 
-    private enum RhythmPhase
+    private void Awake()
     {
-        Demo,
-        Play
+        RecalculateTiming();
     }
 
-    private RhythmPhase phase;
+#if UNITY_EDITOR
+    private void OnValidate()
+    {
+        RecalculateTiming();
+    }
+#endif
+    private void RecalculateTiming()
+    {
+        beatInterval = 60f / bpm;
+        barDuration = beatInterval * beatsPerBar;
+        groupInterval = barDuration * 2f;
+
+        demoDuration = barDuration;
+        playDuration = barDuration;
+    }
 
     private void Start()
     {
-        StartCoroutine(RhythmLoop());
+        StartCoroutine(GroupTimelineLoop());
     }
 
-    private IEnumerator RhythmLoop()
+    private IEnumerator GroupTimelineLoop()
     {
-        // ===== Demo =====
-        phase = RhythmPhase.Demo;
-        Debug.Log("Demo Phase");
+        // 起始偏移
+        if (startOffset > 0f)
+            yield return new WaitForSeconds(startOffset);
 
-        DialogBoxGroup group = spawner.SpawnGroup();
+        while (spawner.HasNextGroup)
+        {
+            CleanupCurrentBatch();
 
-        // ⭐ Demo 阶段：每秒生成一个 Tap
-        yield return StartCoroutine(group.SpawnByBeat(beatInterval));
+            currentGroup = spawner.SpawnNextGroup();
+            if (currentGroup == null)
+                break;
 
-        // ===== Play =====
-        phase = RhythmPhase.Play;
-        Debug.Log("Play Phase");
+            groupFlowCoroutine = StartCoroutine(RunOneGroupFlow(currentGroup));
 
-        group.EnableJudgeAll();
+            yield return new WaitForSeconds(groupInterval);
+        }
+
+        // ===== 播完最后一个 group =====
+        OnAllGroupsFinished();
     }
 
+
+
+
+    private IEnumerator RunOneGroupFlow(DialogBoxGroup group)
+    {
+        JudgeQueue.Instance.Clear();
+        eventCounter?.ResetCounters();
+
+        float demoDuration = groupInterval * 0.5f;
+        float playDuration = groupInterval * 0.5f;
+
+        // ✅ 让 Group 自己按事件表生成，并在生成/hitTime 打点 demoN/playN
+        StartCoroutine(group.DemoSpawnByGroupEvents(demoDuration, eventCounter));
+
+        // Demo 段持续 demoDuration
+        yield return new WaitForSeconds(demoDuration);
+
+        group.BeginPlay();
+
+        // Play 段持续 playDuration
+        yield return new WaitForSeconds(playDuration);
+    }
+
+
+    private void CleanupCurrentBatch()
+    {
+        // 1) 停止上一批流程协程
+        if (groupFlowCoroutine != null)
+        {
+            StopCoroutine(groupFlowCoroutine);
+            groupFlowCoroutine = null;
+        }
+
+        // 2) 清理队列（防止 current 卡住/误判）
+        if (JudgeQueue.Instance != null)
+            JudgeQueue.Instance.Clear();
+
+        // 3) 销毁上一批 group（如果存在）
+        if (currentGroup != null)
+        {
+            Destroy(currentGroup.gameObject);
+            currentGroup = null;
+        }
+    }
+
+    private void OnAllGroupsFinished()
+    {
+        Debug.Log("=== ALL GROUPS FINISHED ===");
+
+        CleanupCurrentBatch();
+
+        // 你可以：
+        // 1) 停在这里（最基础）
+        // enabled = false;
+
+        // 2) 进入结算界面
+        // ShowResult();
+
+        // 3) 等待玩家输入
+        // StartCoroutine(WaitForRestart());
+    }
 
 }
+
+
