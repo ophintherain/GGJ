@@ -32,17 +32,15 @@ public class SoundManager : MonoBehaviour
         // 初始化音效字典
         sfxClips = new Dictionary<string, AudioClip>();
 
-        // 默认播放背景音乐
-        if (bgmAudioSource != null && defaultBgmClip != null)
-        {
-            PlayBGM(defaultBgmClip);
-        }
+
     }
 
     // 播放背景音乐
-    public void PlayBGM(AudioClip clip)
+    public void PlayBGM(string bgmName)
     {
+        AudioClip clip = AudioResourceManager.Instance.GetBGM(bgmName);
         if (bgmAudioSource == null || clip == null) return;
+
 
         // 如果当前正在播放的就是该音乐，不做任何操作
         if (currentBgmClip == clip)

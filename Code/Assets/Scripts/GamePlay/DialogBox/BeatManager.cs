@@ -23,6 +23,9 @@ public class BeatManager : MonoBehaviour
     private DialogBoxGroup currentGroup;
     private Coroutine groupFlowCoroutine;
 
+    public MaskController maskController;
+    public GameObject mask;
+
     private void Awake()
     {
         RecalculateTiming();
@@ -47,6 +50,7 @@ public class BeatManager : MonoBehaviour
     private void Start()
     {
         StartCoroutine(GroupTimelineLoop());
+        SoundManager.Instance.PlayBGM("亲戚_BGM");
     }
 
     private IEnumerator GroupTimelineLoop()
@@ -122,6 +126,9 @@ public class BeatManager : MonoBehaviour
         Debug.Log("=== ALL GROUPS FINISHED ===");
 
         CleanupCurrentBatch();
+
+        mask.SetActive(true);
+        maskController.StartShowMask();
 
         // 你可以：
         // 1) 停在这里（最基础）
