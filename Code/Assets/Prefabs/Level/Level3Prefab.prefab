@@ -270,7 +270,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bpm: 130
   beatsPerBar: 4
-  startOffset: 6.6
+  startOffset: 13.714
   beatInterval: 0.46153846
   barDuration: 1.8461539
   groupInterval: 3.6923077
