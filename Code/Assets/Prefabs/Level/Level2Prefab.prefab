@@ -293,7 +293,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groupPrefabs:
-  - {fileID: 8311907628108658485, guid: e8f96108ad549ec4490f7ebf9f168410, type: 3}
+  - {fileID: 8311907628108658485, guid: 0621687f8670a7c42a6cb8f15f6c40f6, type: 3}
+  - {fileID: 8311907628108658485, guid: c69489bebe272b548bb9864eeff3afd7, type: 3}
 --- !u!114 &1422988524569493996
 MonoBehaviour:
   m_ObjectHideFlags: 0
