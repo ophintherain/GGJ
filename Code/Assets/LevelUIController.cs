@@ -62,28 +62,25 @@ public class LevelUIController : MonoBehaviour
     private void SetButtonState(Button button, bool isUnlocked)
     {
         Image buttonImage = button.GetComponent<Image>();
-
-        // 使用 Animator 或 Sprite 动画来控制按钮的状态
         Animator animator = button.GetComponent<Animator>();
+
         if (isUnlocked)
         {
-            // 解锁时设置解锁动画播放
+            // 解锁时设置动画播放
             if (animator != null)
             {
-                animator.SetBool("IsUnlocked", true); // 解锁状态
-                animator.Play("UnlockedAnimation", 0, 0f); // 播放解锁动画
+                animator.SetBool("IsUnlocked", true); // 设置解锁状态
             }
             buttonImage.color = Color.white; // 正常颜色
         }
         else
         {
-            // 未解锁时设置未解锁动画播放
+            // 未解锁时设置动画播放
             if (animator != null)
             {
-                animator.SetBool("IsUnlocked", false); // 未解锁状态
-                animator.Play("LockedAnimation", 0, 0f); // 播放未解锁动画
+                animator.SetBool("IsUnlocked", false); // 设置未解锁状态
             }
-            buttonImage.color = new Color(0.5f, 0.5f, 0.5f, 1f); // 灰色显示
+
         }
     }
 
