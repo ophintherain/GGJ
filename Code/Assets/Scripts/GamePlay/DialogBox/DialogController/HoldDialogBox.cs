@@ -3,7 +3,7 @@ using UnityEngine;
 public class HoldDialogBox : DialogBoxBase
 {
     [Header("Hold Settings")]
-    public float beatInterval = 1f;            // 一拍时长（建议由 BeatManager 注入）
+    public float HoldInterval = 1f;            // 一拍时长（建议由 BeatManager 注入）
     public float pressWindow = 0.25f;          // 按下允许的时间窗（围绕 hitTime）
     public float releaseWindow = 0.25f;        // 松开允许的时间窗（围绕 hitTime + beatInterval）
     public KeyCode holdKey = KeyCode.Space;
@@ -15,7 +15,7 @@ public class HoldDialogBox : DialogBoxBase
 
     // hold 的目标：按下目标点、松开目标点
     private float PressTarget => hitTime;
-    private float ReleaseTarget => hitTime + beatInterval;
+    private float ReleaseTarget => hitTime + HoldInterval;
 
     private void Update()
     {
