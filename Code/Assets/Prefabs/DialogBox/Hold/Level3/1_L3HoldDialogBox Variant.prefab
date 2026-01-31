@@ -78,7 +78,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 0.7
-  m_Text: "\u9886\u5BFC\u5B57\u4F53\u957F\u8FD9\u6837"
+  m_Text: "\u5148\u7167\u6211\u8BF4\u7684\u8BD5\u8BD5"
 --- !u!1001 &3329857248802206290
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -78,7 +78,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 0.8
-  m_Text: "\u518D\u4E0D\u7ED3\u5A5A\u5C31\n\u6CA1\u4EBA\u8981\u4E86"
+  m_Text: "\u6211\u4E5F\u662F\n\u5173\u5FC3\u4F60\u53D1\u5C55"
 --- !u!1001 &3329857248802206290
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -169,7 +169,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7757824924893947876, guid: aed84bd79e04a764386c24f7fb7aaf6a, type: 3}
       propertyPath: m_Name
-      value: 1_HoldDialogBox Variant
+      value: 2_L1HoldDialogBox Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
