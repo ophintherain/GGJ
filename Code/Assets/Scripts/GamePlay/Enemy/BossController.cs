@@ -31,25 +31,25 @@ public class BossController : MonoBehaviour
 
     public void SetCharacterState(CharacterState newState)
     {
-        // currentState = newState;
+        currentState = newState;
 
-        // // 更新角色的图像
-        // switch (newState)
-        // {
-        //     case CharacterState.Idle:
-        //         characterImage.sprite = characterStatesSprites[0]; 
-        //         break;
-        //     case CharacterState.Angry:
-        //         characterImage.sprite = characterStatesSprites[1]; 
-        //         break;
-        //     case CharacterState.Laugh:
-        //         characterImage.sprite = characterStatesSprites[2];  
-        //         break;
-        //     case CharacterState.Lost:
-        //         characterImage.sprite = characterStatesSprites[3];  
-        //         break;
-        //         // 继续添加其他状态
-        // }
+        // 更新角色的图像
+        switch (newState)
+        {
+            case CharacterState.Idle:
+                characterImage.sprite = characterStatesSprites[0]; 
+                break;
+            case CharacterState.Angry:
+                characterImage.sprite = characterStatesSprites[1]; 
+                break;
+            case CharacterState.Laugh:
+                characterImage.sprite = characterStatesSprites[2];  
+                break;
+            case CharacterState.Lost:
+                characterImage.sprite = characterStatesSprites[3];  
+                break;
+                // 继续添加其他状态
+        }
     }
 
     // 角色血量减少
