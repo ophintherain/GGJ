@@ -15,9 +15,6 @@ Shader "Unlit/Transitions"
         _Color3 ("Tint", Color) = (1,1,1,1)
 
 
-
-
-
         _Progress ("Progress", Range(0, 1)) = 0
 
         _ScaleFactor ("Scale Factor", Range(1, 10)) = 10
