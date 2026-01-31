@@ -55,7 +55,7 @@ MonoBehaviour:
   - time: 0
     dialogBox: {fileID: 389034754051333216}
   - time: 0.47
-    dialogBox: {fileID: 7690957839832541189}
+    dialogBox: {fileID: 590006672070093672, guid: a0ec28345be1a8b4dba9993f3ad87054, type: 3}
   - time: 1.17
     dialogBox: {fileID: 1206168644925393182}
 --- !u!1001 &2833046937698971864
@@ -381,17 +381,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aed84bd79e04a764386c24f7fb7aaf6a, type: 3}
---- !u!114 &7690957839832541189 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2739904325706078522, guid: aed84bd79e04a764386c24f7fb7aaf6a, type: 3}
-  m_PrefabInstance: {fileID: 5529819045345177919}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 543157b2aff7150438776edd63614a7f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &8338913023401535823 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4540780888690464880, guid: aed84bd79e04a764386c24f7fb7aaf6a, type: 3}
