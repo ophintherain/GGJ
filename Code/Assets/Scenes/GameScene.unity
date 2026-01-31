@@ -856,6 +856,46 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2428814438386486517, guid: e6261e5353cb7ed4d95a5d1887453c67, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2428814438386486517, guid: e6261e5353cb7ed4d95a5d1887453c67, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2428814438386486517, guid: e6261e5353cb7ed4d95a5d1887453c67, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2428814438386486517, guid: e6261e5353cb7ed4d95a5d1887453c67, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2428814438386486517, guid: e6261e5353cb7ed4d95a5d1887453c67, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 20040
+      objectReference: {fileID: 0}
+    - target: {fileID: 2428814438386486517, guid: e6261e5353cb7ed4d95a5d1887453c67, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 3884302002346432570, guid: e6261e5353cb7ed4d95a5d1887453c67, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 17a5aa8d55c9c894a902f2921eb88a41, type: 3}
+    - target: {fileID: 3884302002346432570, guid: e6261e5353cb7ed4d95a5d1887453c67, type: 3}
+      propertyPath: m_FontData.m_MaxSize
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3884302002346432570, guid: e6261e5353cb7ed4d95a5d1887453c67, type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3884302002346432570, guid: e6261e5353cb7ed4d95a5d1887453c67, type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 4020228610254159597, guid: e6261e5353cb7ed4d95a5d1887453c67, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 2
