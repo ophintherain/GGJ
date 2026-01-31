@@ -50,7 +50,7 @@ public class BeatManager : MonoBehaviour
     private void Start()
     {
         StartCoroutine(GroupTimelineLoop());
-        SoundManager.Instance.PlayBGM("亲戚_BGM");
+        SoundManager.Instance.PlayBGM("Level2_BGM");
     }
 
     private IEnumerator GroupTimelineLoop()
