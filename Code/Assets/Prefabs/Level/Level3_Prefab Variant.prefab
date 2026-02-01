@@ -8,6 +8,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 572125166122575231, guid: efc657b93291a0348884274cae3c3170, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 21f2976e3951616419e15fc326a19e2e, type: 3}
+    - target: {fileID: 1074057542058690119, guid: efc657b93291a0348884274cae3c3170, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1074057542058690119, guid: efc657b93291a0348884274cae3c3170, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1074057542058690119, guid: efc657b93291a0348884274cae3c3170, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1078090163175500738, guid: efc657b93291a0348884274cae3c3170, type: 3}
       propertyPath: groupPrefabs.Array.size
       value: 18
@@ -168,6 +184,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4662108092324120239, guid: efc657b93291a0348884274cae3c3170, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4662108092324120239, guid: efc657b93291a0348884274cae3c3170, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6394641131622859765, guid: efc657b93291a0348884274cae3c3170, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ae36f0e6b7e31774ba4cec2509fd0878, type: 3}
     - target: {fileID: 7060857126398147872, guid: efc657b93291a0348884274cae3c3170, type: 3}
       propertyPath: bpm
       value: 140
@@ -175,6 +203,10 @@ PrefabInstance:
     - target: {fileID: 7060857126398147872, guid: efc657b93291a0348884274cae3c3170, type: 3}
       propertyPath: barDuration
       value: 1.7142857
+      objectReference: {fileID: 0}
+    - target: {fileID: 7060857126398147872, guid: efc657b93291a0348884274cae3c3170, type: 3}
+      propertyPath: startOffset
+      value: 13.714
       objectReference: {fileID: 0}
     - target: {fileID: 7060857126398147872, guid: efc657b93291a0348884274cae3c3170, type: 3}
       propertyPath: beatInterval
@@ -191,6 +223,10 @@ PrefabInstance:
     - target: {fileID: 7060857126398147872, guid: efc657b93291a0348884274cae3c3170, type: 3}
       propertyPath: groupInterval
       value: 3.4285715
+      objectReference: {fileID: 0}
+    - target: {fileID: 7340655694199717301, guid: efc657b93291a0348884274cae3c3170, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
