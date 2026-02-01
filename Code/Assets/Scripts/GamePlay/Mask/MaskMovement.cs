@@ -48,7 +48,6 @@ public class MaskMovement : MonoBehaviour
 
         worldBounds = new Rect(minX, minY, maxX - minX, maxY - minY);
 
-        Debug.Log($"{name}: World bounds = {worldBounds}");
     }
 
     private void OnEnable()
@@ -65,12 +64,6 @@ public class MaskMovement : MonoBehaviour
 
     private void Update()
     {
-        if (bounds == null)
-        {
-            Debug.LogError($"{name} bounds still NULL in Update");
-            return;
-        }
-
         MoveAndBounce();
     }
 
