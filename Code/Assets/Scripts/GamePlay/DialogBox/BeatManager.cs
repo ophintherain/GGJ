@@ -23,8 +23,11 @@ public class BeatManager : MonoBehaviour
     private DialogBoxGroup currentGroup;
     private Coroutine groupFlowCoroutine;
 
+    [Header("Mask Timeline")]
     public MaskController maskController;
     public GameObject mask;
+    public float idlePhaseDuration = 2f;
+    public float frenzyPhaseDuration = 2f;
 
     private void Awake()
     {
@@ -54,6 +57,7 @@ public class BeatManager : MonoBehaviour
 
     private IEnumerator GroupTimelineLoop()
     {
+        Debug.Log("=== GROUP TIMELINE START ===");
         // 起始偏移
         if (startOffset > 0f)
             yield return new WaitForSeconds(startOffset);
@@ -72,7 +76,7 @@ public class BeatManager : MonoBehaviour
         }
 
         // ===== 播完最后一个 group =====
-        OnAllGroupsFinished();
+        yield return StartCoroutine(OnAllGroupsFinished());
     }
 
 
@@ -120,25 +124,35 @@ public class BeatManager : MonoBehaviour
         }
     }
 
-    private void OnAllGroupsFinished()
+    private IEnumerator OnAllGroupsFinished()
     {
-        Debug.Log("=== ALL GROUPS FINISHED ===");
 
         CleanupCurrentBatch();
 
         mask.SetActive(true);
-        maskController.StartShowMask();
+        maskController.StartIdlePhase();
 
-        // 你可以：
-        // 1) 停在这里（最基础）
-        // enabled = false;
+        // 沉寂阶段持续时间
+        yield return new WaitForSeconds(idlePhaseDuration);
 
-        // 2) 进入结算界面
-        // ShowResult();
+        // 切换到燃阶段
+        maskController.StartFrenzyPhase();
 
-        // 3) 等待玩家输入
-        // StartCoroutine(WaitForRestart());
+        // 燃阶段持续时间
+        yield return new WaitForSeconds(frenzyPhaseDuration);
+
+        // 燃阶段结束后的逻辑
+        OnFrenzyPhaseEnd();
     }
+
+    private void OnFrenzyPhaseEnd()
+    {
+        // 燃阶段结束后的处理逻辑（例如结算、回到主界面等）
+        Debug.Log("Frenzy Phase Ended. Triggering End Events...");
+        // 在这里执行一些具体的事件
+    }
+
+
 
 }
 

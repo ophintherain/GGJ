@@ -75,7 +75,6 @@ public class SwipeDialogBox : DialogBoxBase,
         {
             isHoldingMouse = true;
             enteredWhileHolding = true;
-            // Debug.Log("Swipe: entered while holding");
         }
     }
 
