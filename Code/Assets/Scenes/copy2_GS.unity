@@ -8122,7 +8122,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3225680804860853688, guid: a6dac67624d58c343a24f04d59da034f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3351508511963308698, guid: a6dac67624d58c343a24f04d59da034f, type: 3}
       propertyPath: m_AnchorMax.x
@@ -8935,7 +8935,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6873507959425546814, guid: 0a3469ad5ec5cdb46a9032bcf3365141, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
