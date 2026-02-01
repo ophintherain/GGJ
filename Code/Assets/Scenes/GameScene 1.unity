@@ -11775,6 +11775,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4469727440501261400, guid: 0a3469ad5ec5cdb46a9032bcf3365141, type: 3}
+      propertyPath: startOffset
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4469727440501261400, guid: 0a3469ad5ec5cdb46a9032bcf3365141, type: 3}
       propertyPath: idlePhaseDuration
       value: 3
       objectReference: {fileID: 0}

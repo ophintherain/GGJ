@@ -44,7 +44,7 @@ public class LevelUIController : MonoBehaviour
         RefreshLevelButtons();
     }
 
-    private void RefreshLevelButtons()
+    public void RefreshLevelButtons()
     {
         int unlockedCount = LevelManager.Instance.GetMaxUnlockedLevel();
 
