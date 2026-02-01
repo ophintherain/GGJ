@@ -73,6 +73,7 @@ public class SwipeDialogBox : DialogBoxBase,
         // 只有按住时进入才算有效 swipe 流程
         if (Input.GetMouseButton(0))
         {
+            SoundManager.Instance.PlaySFX("SwipeSfx");
             isHoldingMouse = true;
             enteredWhileHolding = true;
         }
