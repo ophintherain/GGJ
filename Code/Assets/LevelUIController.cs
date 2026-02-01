@@ -19,6 +19,9 @@ public class LevelUIController : MonoBehaviour
     [Header("Level Buttons")]
     public Button[] levelButtons;
 
+    public GameObject TurPanel;
+    public GameObject LevPanel;
+
     private void Start()
     {
         ShowStartScreen();
@@ -139,6 +142,18 @@ public class LevelUIController : MonoBehaviour
             RectTransform rt = button.GetComponent<RectTransform>();
             rt.localScale = Vector3.one; // 恢复原始大小
         }
+    }
+
+    public void showTur()
+    {
+        TurPanel.SetActive(true);
+        LevPanel.SetActive(false);
+    }
+
+    public void HideTur()
+    {
+        TurPanel.SetActive(false);
+        LevPanel.SetActive(true);
     }
 
 
