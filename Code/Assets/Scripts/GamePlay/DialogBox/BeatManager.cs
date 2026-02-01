@@ -57,7 +57,6 @@ public class BeatManager : MonoBehaviour
 
     private IEnumerator GroupTimelineLoop()
     {
-        Debug.Log("=== GROUP TIMELINE START ===");
         // 起始偏移
         if (startOffset > 0f)
             yield return new WaitForSeconds(startOffset);
@@ -149,6 +148,16 @@ public class BeatManager : MonoBehaviour
     {
         // 燃阶段结束后的处理逻辑（例如结算、回到主界面等）
         Debug.Log("Frenzy Phase Ended. Triggering End Events...");
+        if (maskController != null)
+        {
+            maskController.DestroyAllMasks();
+        }
+
+        // ✅ 隐藏mask容器（如果需要的话）
+        if (mask != null)
+        {
+            mask.SetActive(false);
+        }
         // 在这里执行一些具体的事件
     }
 

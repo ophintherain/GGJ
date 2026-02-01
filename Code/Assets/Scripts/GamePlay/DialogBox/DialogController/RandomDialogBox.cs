@@ -48,6 +48,7 @@ public class RandomDialogBox : DialogBoxBase
         // 1️⃣ 正确按键
         if (Input.GetKeyDown(expectedKey))
         {
+            SoundManager.Instance.PlaySFX("WASDSfx");
             currentIndex++;
             Debug.Log($"Random step {currentIndex}/{sequence.Length}");
 

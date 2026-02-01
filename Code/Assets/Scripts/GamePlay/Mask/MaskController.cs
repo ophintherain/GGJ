@@ -93,4 +93,25 @@ public class MaskController : MonoBehaviour
 
         spawnCo = null;
     }
+    
+    public void DestroyAllMasks()
+    {
+        spawning = false;
+        if (spawnCo != null)
+        {
+            StopCoroutine(spawnCo);
+            spawnCo = null;
+        }
+
+        // 销毁所有mask子物体
+        foreach (var m in masks)
+        {
+            if (m) Destroy(m);
+        }
+
+        // 清空列表
+        masks.Clear();
+
+        Debug.Log("All masks destroyed.");
+    }
 }

@@ -13,6 +13,7 @@ public class TapDialogBox : DialogBoxBase, IPointerClickHandler
 
         // ✅ 必须轮到我 + 必须在窗口内
         if (!JudgeQueue.Instance.CanJudgeNow(this)) return;
+        SoundManager.Instance.PlaySFX("TapSfx");
 
         resolved = true;
         Debug.Log("Tap Hit!");

@@ -50,6 +50,7 @@ public class HoldDialogBox : DialogBoxBase
         {
             if (Mathf.Abs(now - PressTarget) <= pressWindow)
             {
+                SoundManager.Instance.PlaySFX("HoldSfx");
                 holding = true;
                 pressTime = now;
                 // Debug.Log("Hold press accepted");
