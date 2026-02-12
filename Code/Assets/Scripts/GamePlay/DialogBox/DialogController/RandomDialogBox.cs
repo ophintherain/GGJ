@@ -13,11 +13,6 @@ public class RandomDialogBox : DialogBoxBase
     private int currentIndex = 0;
     private bool resolved = false;
 
-    private void Awake()
-    {
-        // Random 属于键盘输入
-        //（如果你之后用 channel 分类，这里已经语义正确）
-    }
 
     private void Update()
     {

@@ -22,18 +22,26 @@ public class BossController : MonoBehaviour
 
     private CharacterState currentState = CharacterState.Idle;
 
+    public delegate void OnBossDefeated();
+    public event OnBossDefeated onBossDefeated;
+
     private void Start()
     {
         // 初始化角色状态和血量
-        SetCharacterState(currentState);
+        //SetCharacterState(currentState);
         healthBar.SetMaxHealth(BossHealth);  // 假设角色最大血量是100
+
+        if (healthBar != null)
+        {
+            healthBar.onHealthZero.AddListener(OnHealthZero);
+        }
     }
 
     public void SetCharacterState(CharacterState newState)
     {
-        // currentState = newState;
+        currentState = newState;
 
-        // // 更新角色的图像
+        // 更新角色的图像
         // switch (newState)
         // {
         //     case CharacterState.Idle:
@@ -45,9 +53,6 @@ public class BossController : MonoBehaviour
         //     case CharacterState.Laugh:
         //         characterImage.sprite = characterStatesSprites[2];  
         //         break;
-        //     case CharacterState.Lost:
-        //         characterImage.sprite = characterStatesSprites[3];  
-        //         break;
         //         // 继续添加其他状态
         // }
     }
@@ -56,5 +61,19 @@ public class BossController : MonoBehaviour
     public void DecreaseHealth(float amount)
     {
         healthBar.DecreaseHealth(amount);
+    }
+    private void OnHealthZero()
+    {
+        Debug.Log("Boss被击败！");
+        //SetCharacterState(CharacterState.Lost);
+
+        // 触发Boss被击败事件
+        onBossDefeated?.Invoke();
+
+    }
+
+    public float GetCurrentHealth()
+    {
+        return healthBar.GetCurrentHealth();
     }
 }

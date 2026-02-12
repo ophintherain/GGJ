@@ -81,6 +81,11 @@ public class DialogBoxGroup : MonoBehaviour
         }
     }
 
+    public int GetTotalNotes()
+    {
+        return events.Count(e => e != null && e.dialogBox != null);
+    }
+
     public void BeginPlay()
     {
         foreach (var e in events)

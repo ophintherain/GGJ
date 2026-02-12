@@ -7,7 +7,7 @@ public class SoundManager : MonoBehaviour
 
     [Header("Background Music (BGM)")]
     public AudioSource bgmAudioSource;
-    
+
     [Header("Sound Effects (SFX)")]
     public AudioSource sfxAudioSource;
 
@@ -19,6 +19,7 @@ public class SoundManager : MonoBehaviour
 
     private void Awake()
     {
+        PlayBGM("BGM");
         if (Instance == null)
         {
             Instance = this;
@@ -30,11 +31,16 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+    public void PlayMenuBGM()
+    {
+        PlayBGM("BGM");
+    }
+
     // 播放背景音乐
     public void PlayBGM(string bgmName)
     {
         if (bgmAudioSource == null) return;
-        
+
         AudioClip clip = AudioResourceManager.Instance.GetBGM(bgmName);
         if (clip == null) return;
 
@@ -52,7 +58,7 @@ public class SoundManager : MonoBehaviour
     public void PlaySFX(string sfxName)
     {
         if (sfxAudioSource == null) return;
-        
+
         AudioClip clip = AudioResourceManager.Instance.GetSFX(sfxName);
         if (clip == null)
         {

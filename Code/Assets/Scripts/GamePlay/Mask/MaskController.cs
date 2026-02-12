@@ -44,7 +44,6 @@ public class MaskController : MonoBehaviour
             if (mv != null)
             {
                 mv.Setup(boundsBG, moveSpeed);
-                Debug.Log($"Setup mask: {m.name}");
             }
             else
             {

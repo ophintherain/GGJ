@@ -29,9 +29,28 @@ public class BeatManager : MonoBehaviour
     public float idlePhaseDuration = 2f;
     public float frenzyPhaseDuration = 2f;
 
+    private int groupIndex = 0;
+
+    private int groupHit;
+    private int groupMiss;
+    private int groupTotal;
+
+    // ✅ 添加 BossController 引用
+    private BossController bossController;
+
     private void Awake()
     {
         RecalculateTiming();
+        // 自动查找子物体中的 BossController
+        bossController = GetComponentInChildren<BossController>();
+        if (bossController != null)
+        {
+            Debug.Log($"Found BossController: {bossController.name}");
+        }
+        else
+        {
+            Debug.LogWarning("No BossController found in children");
+        }
     }
 
 #if UNITY_EDITOR
@@ -86,6 +105,14 @@ public class BeatManager : MonoBehaviour
         JudgeQueue.Instance.Clear();
         eventCounter?.ResetCounters();
 
+        // ===== 本组统计初始化 =====
+        groupHit = 0;
+        groupMiss = 0;
+        groupTotal = group.GetTotalNotes();
+
+        // ✅ 订阅判定结果
+        DialogBoxBase.OnResolved += OnDialogResolved;
+
         float demoDuration = groupInterval * 0.5f;
         float playDuration = groupInterval * 0.5f;
 
@@ -99,6 +126,59 @@ public class BeatManager : MonoBehaviour
 
         // Play 段持续 playDuration
         yield return new WaitForSeconds(playDuration);
+
+        DialogBoxBase.OnResolved -= OnDialogResolved;
+
+        // ✅ 判断是否"全对"（没有Miss）
+        bool isPerfect = (groupMiss == 0) && (groupTotal > 0);
+
+        // ✅ 根据结果改变Boss状态
+        if (bossController != null)
+        {
+            if (isPerfect)
+            {
+                // 全对 → Angry
+                bossController.SetCharacterState(CharacterState.Angry);
+                Debug.Log($"Group {groupIndex}: PERFECT → Boss angry");
+            }
+            else
+            {
+                // 有错 → Laugh
+                bossController.SetCharacterState(CharacterState.Laugh);
+                Debug.Log($"Group {groupIndex}: NOT PERFECT → Boss laugh");
+            }
+        }
+
+        OnGroupFinished(groupIndex, group, isPerfect, groupHit, groupMiss, groupTotal);
+
+        groupIndex++;
+    }
+
+    private void OnDialogResolved(DialogBoxBase box, bool isHit)
+    {
+        // 只统计本组期间发生的（我们在本组协程开始订阅，结束取消订阅，所以这里天然是本组）
+        if (isHit) groupHit++;
+        else groupMiss++;
+
+        // 你想看得更清楚可以加：
+        // Debug.Log($"[Group#{groupIndex}] Resolved: {box.name}  hit={isHit}  hit={groupHit}/{groupTotal} miss={groupMiss}");
+    }
+
+    /// <summary>
+    /// ✅ 你要写“这一组全对触发什么”，就写这里（尽量在 BeatManager）
+    /// </summary>
+    private void OnGroupPerfect(int index, DialogBoxGroup group)
+    {
+        Debug.Log($"=== GROUP PERFECT! index={index} ===");
+
+    }
+
+    /// <summary>
+    /// （可选）每组结束都会走，方便你做统计/调试
+    /// </summary>
+    private void OnGroupFinished(int index, DialogBoxGroup group, bool perfect, int hit, int miss, int total)
+    {
+        Debug.Log($"=== GROUP FINISHED index={index} perfect={perfect} hit={hit}/{total} miss={miss} ===");
     }
 
 
@@ -159,6 +239,50 @@ public class BeatManager : MonoBehaviour
             mask.SetActive(false);
         }
         // 在这里执行一些具体的事件
+        // 检查游戏结果
+        CheckGameResult();
+    }
+
+    private void CheckGameResult()
+    {
+        int levelIndex = 1;
+        bool isWin = false;
+
+        // 获取当前关卡
+        if (LevelManager.Instance != null)
+        {
+            // 注意：需要给LevelManager添加GetCurrentLevelIndex方法
+            levelIndex = LevelManager.Instance.GetCurrentLevelIndex();
+        }
+
+        // 检查是否胜利
+        BossController boss = FindObjectOfType<BossController>();
+        if (boss != null)
+        {
+            isWin = boss.GetCurrentHealth() <= 0;
+        }
+        if (ResultUIController.Instance == null)
+        {
+            // 查找所有场景中的 ResultUIController（包括未激活的）
+            var resultControllers = FindObjectsOfType<ResultUIController>(true);
+            if (resultControllers.Length > 0)
+            {
+                // 使用找到的第一个 ResultUIController
+                resultControllers[0].gameObject.SetActive(true);
+                resultControllers[0].ShowResult(levelIndex, isWin);
+                return;
+            }
+        }
+
+        // 显示结果
+        if (ResultUIController.Instance != null)
+        {
+            ResultUIController.Instance.ShowResult(levelIndex, isWin);
+        }
+        // else
+        // {
+        //     Debug.LogError("ResultUIController is not assigned.");
+        // }
     }
 
 

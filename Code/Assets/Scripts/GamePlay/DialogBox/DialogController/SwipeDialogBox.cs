@@ -17,11 +17,7 @@ public class SwipeDialogBox : DialogBoxBase,
     // 是否已经在按住的情况下“进入过”
     private bool enteredWhileHolding = false;
 
-    private void Awake()
-    {
-        // Swipe 属于 Pointer 通道
-        // （如果你之后要区分 channel，可以在这里设置）
-    }
+
 
     private void Update()
     {

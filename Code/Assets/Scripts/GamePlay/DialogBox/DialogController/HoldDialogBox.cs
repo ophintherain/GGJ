@@ -74,6 +74,7 @@ public class HoldDialogBox : DialogBoxBase
                 resolved = true;
                 Debug.Log("Hold Hit!");
                 ResolveHitAndDespawn(); // ✅ 命中才消失
+                
             }
             else
             {
