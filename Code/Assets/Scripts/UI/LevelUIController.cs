@@ -135,7 +135,6 @@ public class LevelUIController : Singleton<LevelUIController>
             rt.localScale = Vector3.one; // 恢复原始大小
         }
     }
-<<<<<<< HEAD:Code/Assets/LevelUIController.cs
 
     public void showTur()
     {
@@ -148,11 +147,6 @@ public class LevelUIController : Singleton<LevelUIController>
         TurPanel.SetActive(false);
         LevPanel.SetActive(true);
     }
-
-
 }
 
 
-=======
-}
->>>>>>> b9656c96ab7a5f799d2c3986dbcf91c9c225a385:Code/Assets/Scripts/UI/LevelUIController.cs

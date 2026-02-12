@@ -40,6 +40,9 @@ public class LevelManager : SingletonPersistent<LevelManager>
 
     public void LoadLevel(int levelIndex)
     {
+        // 保存当前关卡索引
+        SaveCurrentLevelIndex(levelIndex);
+    
         if (levelSelectPanel != null) levelSelectPanel.SetActive(false);
 
         for (int i = 0; i < levelContents.Length; i++)
@@ -51,6 +54,14 @@ public class LevelManager : SingletonPersistent<LevelManager>
         }
         Debug.Log($"正在加载第 {levelIndex} 关");
     }
+    
+    public void SaveCurrentLevelIndex(int levelIndex)
+    {
+        PlayerPrefs.SetInt("LastPlayedLevel", levelIndex);
+        PlayerPrefs.Save();
+        Debug.Log($"保存当前关卡索引: {levelIndex}");
+    }
+    
     public void BackToLevelSelect()
     {
         foreach (var level in levelContents)
@@ -72,5 +83,25 @@ public class LevelManager : SingletonPersistent<LevelManager>
         {
             Debug.LogError("找不到 LevelUIController 实例！请检查场景中是否挂载了该脚本。");
         }
+    }
+    
+    /// <summary>
+    /// 获取当前正在游玩的关卡索引
+    /// </summary>
+    public int GetCurrentLevelIndex()
+    {
+        for (int i = 0; i < levelContents.Length; i++)
+        {
+            if (levelContents[i] != null && levelContents[i].activeInHierarchy)
+            {
+                int levelIndex = i + 1;
+                Debug.Log($"当前关卡索引: {levelIndex}");
+                return levelIndex;
+            }
+        }
+        
+        int lastPlayedLevel = PlayerPrefs.GetInt("LastPlayedLevel", 1);
+        Debug.Log($"从PlayerPrefs获取最后关卡: {lastPlayedLevel}");
+        return lastPlayedLevel;
     }
 }

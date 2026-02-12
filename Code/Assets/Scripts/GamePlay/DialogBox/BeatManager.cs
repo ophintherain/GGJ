@@ -245,7 +245,6 @@ public class BeatManager : MonoBehaviour
         // 获取当前关卡
         if (LevelManager.Instance != null)
         {
-            // 注意：需要给LevelManager添加GetCurrentLevelIndex方法
             levelIndex = LevelManager.Instance.GetCurrentLevelIndex();
         }
 
@@ -255,27 +254,11 @@ public class BeatManager : MonoBehaviour
         {
             isWin = boss.GetCurrentHealth() <= 0;
         }
-        if (ResultUIController.Instance == null)
-        {
-            // 查找所有场景中的 ResultUIController（包括未激活的）
-            var resultControllers = FindObjectsOfType<ResultUIController>(true);
-            if (resultControllers.Length > 0)
-            {
-                // 使用找到的第一个 ResultUIController
-                resultControllers[0].gameObject.SetActive(true);
-                resultControllers[0].ShowResult(levelIndex, isWin);
-                return;
-            }
-        }
-
+        
         // 显示结果
         if (ResultUIController.Instance != null)
         {
             ResultUIController.Instance.ShowResult(levelIndex, isWin);
         }
-        // else
-        // {
-        //     Debug.LogError("ResultUIController is not assigned.");
-        // }
     }
 }

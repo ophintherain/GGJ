@@ -28,9 +28,8 @@ public class MaskController : MonoBehaviour
             foreach (Transform t in transform)
                 masks.Add(t.gameObject);
         }
-
-
     }
+    
     private void Start()
     {
 

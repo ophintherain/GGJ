@@ -84,7 +84,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &957645331263858694
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5100,8 +5100,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6d2bfe79fcf176478297cde8089fc22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  appearDuration: 2
-  playableDuration: 2
+  masks: []
+  boundsBG: {fileID: 0}
+  moveSpeed: 200
+  spawnInterval: 0.2
 --- !u!114 &8211980794458549671
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5114,7 +5116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8a59c59d43fe9f4ba3434ec87e167d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  frenzy: {fileID: 3564350108990757329}
+  mask: {fileID: 0}
   boss: {fileID: 2946056696811765425}
   damagePerSwipe: 1
 --- !u!1001 &367882166918705602
