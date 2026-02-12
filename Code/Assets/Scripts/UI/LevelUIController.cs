@@ -7,17 +7,16 @@ using UnityEngine.EventSystems;
 public class LevelUIController : MonoBehaviour
 {
     public static LevelUIController Instance { get; private set; }
+
     private void Awake()
     {
         Instance = this;
     }
 
-    [Header("Panels")]
-    public GameObject startPanel;
+    [Header("Panels")] public GameObject startPanel;
     public GameObject levelSelectPanel;
 
-    [Header("Level Buttons")]
-    public Button[] levelButtons;
+    [Header("Level Buttons")] public Button[] levelButtons;
 
     public GameObject TurPanel;
     public GameObject LevPanel;
@@ -74,6 +73,7 @@ public class LevelUIController : MonoBehaviour
             {
                 animator.SetBool("IsUnlocked", true); // 设置解锁状态
             }
+
             buttonImage.color = Color.white; // 正常颜色
         }
         else
@@ -83,7 +83,6 @@ public class LevelUIController : MonoBehaviour
             {
                 animator.SetBool("IsUnlocked", false); // 设置未解锁状态
             }
-
         }
     }
 
@@ -143,6 +142,7 @@ public class LevelUIController : MonoBehaviour
             rt.localScale = Vector3.one; // 恢复原始大小
         }
     }
+<<<<<<< HEAD:Code/Assets/LevelUIController.cs
 
     public void showTur()
     {
@@ -160,3 +160,6 @@ public class LevelUIController : MonoBehaviour
 }
 
 
+=======
+}
+>>>>>>> b9656c96ab7a5f799d2c3986dbcf91c9c225a385:Code/Assets/Scripts/UI/LevelUIController.cs
