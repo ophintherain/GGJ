@@ -4,15 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class LevelUIController : MonoBehaviour
+public class LevelUIController : Singleton<LevelUIController>
 {
-    public static LevelUIController Instance { get; private set; }
-
-    private void Awake()
-    {
-        Instance = this;
-    }
-
     [Header("Panels")] public GameObject startPanel;
     public GameObject levelSelectPanel;
 

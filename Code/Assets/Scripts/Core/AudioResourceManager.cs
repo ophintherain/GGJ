@@ -1,10 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class AudioResourceManager : MonoBehaviour
+public class AudioResourceManager : SingletonPersistent<AudioResourceManager>
 {
-    public static AudioResourceManager Instance { get; private set; }
-
     [Header("Background Music (BGM)")]
     public AudioClip[] bgmClips; // 所有背景音乐
     private Dictionary<string, AudioClip> bgmDict; // 用字典管理背景音乐资源
@@ -13,17 +11,9 @@ public class AudioResourceManager : MonoBehaviour
     public AudioClip[] sfxClips; // 所有音效
     private Dictionary<string, AudioClip> sfxDict; // 用字典管理音效资源
 
-    private void Awake()
+    protected override void Awake()
     {
-        // 单例模式
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        base.Awake();
 
         // 初始化字典
         bgmDict = new Dictionary<string, AudioClip>();
