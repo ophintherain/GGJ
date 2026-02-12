@@ -1,10 +1,7 @@
-// 简化的 SoundManager.cs
 using UnityEngine;
 
-public class SoundManager : MonoBehaviour
+public class SoundManager : SingletonPersistent<SoundManager>
 {
-    public static SoundManager Instance { get; private set; }
-
     [Header("Background Music (BGM)")]
     public AudioSource bgmAudioSource;
     
@@ -16,19 +13,6 @@ public class SoundManager : MonoBehaviour
     [Range(0f, 1f)] public float sfxVolume = 1f;
 
     private AudioClip currentBgmClip;
-
-    private void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
 
     // 播放背景音乐
     public void PlayBGM(string bgmName)

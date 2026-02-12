@@ -3,23 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LevelManager : MonoBehaviour
+public class LevelManager : SingletonPersistent<LevelManager>
 {
-    public static LevelManager Instance { get; private set; }
-
-
     [Header("Level Objects")]
     public GameObject levelSelectPanel;
     public GameObject[] levelContents;
 
     private const string UNLOCKED_LEVEL_KEY = "MaxUnlockedLevel";
-
-    private void Awake()
-    {
-        if (Instance == null) { Instance = this; }
-        else { Destroy(gameObject); }
-    }
-
+    
     private void Start()
     {
         UnlockNextLevel(1); // 初始解锁第一关  
