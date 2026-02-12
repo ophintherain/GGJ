@@ -3,12 +3,10 @@ using UnityEngine;
 
 public class BeatManager : MonoBehaviour
 {
-    [Header("Rhythm")]
-    public float bpm = 130f;
+    [Header("Rhythm")] public float bpm = 130f;
     public int beatsPerBar = 4;
 
-    [Header("Group Timeline")]
-    public float startOffset = 2f;
+    [Header("Group Timeline")] public float startOffset = 2f;
 
     // ===== 自动计算出来的 =====
     [HideInInspector] public float beatInterval;
@@ -18,13 +16,12 @@ public class BeatManager : MonoBehaviour
     [HideInInspector] public float playDuration;
 
     public DialogBoxSpawner spawner;
-    public EventCounter eventCounter;      // 你之前要 demo1/demo2/play1/play2 倒数的那个
+    public EventCounter eventCounter; // 你之前要 demo1/demo2/play1/play2 倒数的那个
 
     private DialogBoxGroup currentGroup;
     private Coroutine groupFlowCoroutine;
 
-    [Header("Mask Timeline")]
-    public MaskController maskController;
+    [Header("Mask Timeline")] public MaskController maskController;
     public GameObject mask;
     public float idlePhaseDuration = 2f;
     public float frenzyPhaseDuration = 2f;
@@ -79,8 +76,6 @@ public class BeatManager : MonoBehaviour
     }
 
 
-
-
     private IEnumerator RunOneGroupFlow(DialogBoxGroup group)
     {
         JudgeQueue.Instance.Clear();
@@ -125,7 +120,6 @@ public class BeatManager : MonoBehaviour
 
     private IEnumerator OnAllGroupsFinished()
     {
-
         CleanupCurrentBatch();
 
         mask.SetActive(true);
@@ -160,9 +154,4 @@ public class BeatManager : MonoBehaviour
         }
         // 在这里执行一些具体的事件
     }
-
-
-
 }
-
-
